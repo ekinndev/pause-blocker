@@ -60,9 +60,9 @@ const OptionsPage: React.FC = () => {
   };
 
   return (
-    <div className='min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-8'>
-      <div className='w-full max-w-3xl mx-auto px-4'>
-        <div className='bg-white rounded-2xl shadow-xl p-6 sm:p-8'>
+    <div className='min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-8 w-screen'>
+      <div className='w-full  px-4'>
+        <div className='bg-white rounded-2xl shadow-xl p-6 sm:p-8 max-w-3xl mx-auto'>
           {/* Header */}
           <div className='text-center mb-8'>
             <h1 className='text-3xl font-bold text-gray-900 mb-2'>Pause Blocker</h1>
