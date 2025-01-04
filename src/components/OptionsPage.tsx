@@ -66,7 +66,7 @@ const OptionsPage: React.FC = () => {
           {/* Header */}
           <div className='text-center mb-8'>
             <h1 className='text-3xl font-bold text-gray-900 mb-2'>Pause Blocker</h1>
-            <p className='text-gray-600'>Manage websites where auto-pause should be disabled</p>
+            <p className='text-gray-600'>Manage websites where auto-pause should be working</p>
           </div>
 
           {/* Add URL Form */}
