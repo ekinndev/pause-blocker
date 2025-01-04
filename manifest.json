@@ -3,7 +3,7 @@
   "name": "Pause Blocker",
   "version": "1.0",
   "description": "Prevents auto-pause when switching tabs",
-  "permissions": ["storage", "scripting", "activeTab"],
+  "permissions": ["storage"],
   "host_permissions": ["*://*/*"],
   "options_ui": {
     "page": "index.html",
