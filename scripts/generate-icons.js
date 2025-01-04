@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const sizes = [16, 32, 48, 128];
-const inputSvg = join(__dirname, '../src/assets/icon.svg');
+const inputSvg = join(__dirname, '../src/assets/icon.png');
 const outputDir = join(__dirname, '../src/assets');
 
 async function generateIcons() {
