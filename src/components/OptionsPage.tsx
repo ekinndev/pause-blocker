@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { chromeStorage } from '../utils/storage';
 
 interface WhitelistItem {
   url: string;
@@ -12,7 +11,7 @@ const OptionsPage: React.FC = () => {
 
   useEffect(() => {
     const loadWhitelist = async () => {
-      const result = await chromeStorage.get(['whitelist']);
+      const result = await chrome.storage.sync.get(['whitelist']);
       setWhitelist(result.whitelist || []);
     };
     loadWhitelist();
@@ -45,7 +44,7 @@ const OptionsPage: React.FC = () => {
       }
 
       const updatedWhitelist = [...whitelist, { url: hostname }];
-      await chromeStorage.set({ whitelist: updatedWhitelist });
+      await chrome.storage.sync.set({ whitelist: updatedWhitelist });
       setWhitelist(updatedWhitelist);
       setNewUrl('');
     } catch (err) {
@@ -55,7 +54,7 @@ const OptionsPage: React.FC = () => {
 
   const handleRemoveUrl = async (urlToRemove: string) => {
     const updatedWhitelist = whitelist.filter(item => item.url !== urlToRemove);
-    await chromeStorage.set({ whitelist: updatedWhitelist });
+    await chrome.storage.sync.set({ whitelist: updatedWhitelist });
     setWhitelist(updatedWhitelist);
   };
 
@@ -66,7 +65,7 @@ const OptionsPage: React.FC = () => {
           {/* Header */}
           <div className='text-center mb-8'>
             <h1 className='text-3xl font-bold text-gray-900 mb-2'>Pause Blocker</h1>
-            <p className='text-gray-600'>Manage websites where auto-pause should be working</p>
+            <p className='text-gray-600'>Manage websites where auto-pause should be disabled</p>
           </div>
 
           {/* Add URL Form */}

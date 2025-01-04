@@ -1,5 +1,3 @@
-import { chromeStorage } from './utils/storage';
-
 interface WhitelistItem {
   url: string;
 }
@@ -75,10 +73,21 @@ const override = () => {
 
 // Check if current URL is in whitelist
 const shouldApplyOverride = async (): Promise<boolean> => {
-  const result = await chromeStorage.get(['whitelist']);
-  const whitelist: WhitelistItem[] = result.whitelist || [];
-  const currentHost = window.location.hostname.replace(/^www\./, '');
-  return whitelist.some(item => currentHost.includes(item.url));
+  try {
+    const result = await chrome.storage.sync.get(['whitelist']);
+    const whitelist: WhitelistItem[] = result.whitelist || [];
+    const currentHost = window.location.hostname.replace(/^www\./, '');
+
+    // Try exact match first
+    if (whitelist.some(item => item.url === currentHost)) {
+      return true;
+    }
+
+    // Try domain match
+    return whitelist.some(item => currentHost.endsWith(item.url));
+  } catch {
+    return false;
+  }
 };
 
 // Initialize
