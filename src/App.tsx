@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import OptionsPage from './components/OptionsPage';
 
 const App: React.FC = () => {
@@ -7,6 +7,7 @@ const App: React.FC = () => {
     <Router>
       <Routes>
         <Route path='/' element={<OptionsPage />} />
+        <Route path='/index.html' element={<OptionsPage />} />
       </Routes>
     </Router>
   );

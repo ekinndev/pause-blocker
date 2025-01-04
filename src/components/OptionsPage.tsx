@@ -60,8 +60,8 @@ const OptionsPage: React.FC = () => {
   };
 
   return (
-    <div className='min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-12 px-4 sm:px-6 lg:px-8'>
-      <div className='max-w-3xl mx-auto'>
+    <div className='min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-8'>
+      <div className='w-full max-w-3xl mx-auto px-4'>
         <div className='bg-white rounded-2xl shadow-xl p-6 sm:p-8'>
           {/* Header */}
           <div className='text-center mb-8'>
