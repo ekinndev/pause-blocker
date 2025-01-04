@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Pause Blocker",
+  "version": "1.0",
+  "description": "Prevents auto-pause when switching tabs",
+  "permissions": ["storage"],
+  "options_ui": {
+    "page": "dist/index.html",
+    "open_in_tab": true
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["dist/content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "icons": {
+    "16": "src/assets/icon16.png",
+    "32": "src/assets/icon32.png",
+    "48": "src/assets/icon48.png",
+    "128": "src/assets/icon128.png"
+  }
+}
