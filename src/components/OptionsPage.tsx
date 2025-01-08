@@ -5,14 +5,14 @@ interface WhitelistItem {
 }
 
 const OptionsPage: React.FC = () => {
-  const [whitelist, setWhitelist] = useState<WhitelistItem[]>([]);
+  const [websiteList, setWebsiteList] = useState<WhitelistItem[]>([]);
   const [newUrl, setNewUrl] = useState('');
   const [error, setError] = useState<string>('');
 
   useEffect(() => {
     const loadWhitelist = async () => {
       const result = await chrome.storage.sync.get(['whitelist']);
-      setWhitelist(result.whitelist || []);
+      setWebsiteList(result.whitelist || []);
     };
     loadWhitelist();
   }, []);
@@ -38,14 +38,14 @@ const OptionsPage: React.FC = () => {
       const hostname = extractHostname(newUrl.trim());
 
       // Check if hostname already exists
-      if (whitelist.some(item => item.url === hostname)) {
+      if (websiteList.some(item => item.url === hostname)) {
         setError('This website is already in the whitelist');
         return;
       }
 
-      const updatedWhitelist = [...whitelist, { url: hostname }];
+      const updatedWhitelist = [...websiteList, { url: hostname }];
       await chrome.storage.sync.set({ whitelist: updatedWhitelist });
-      setWhitelist(updatedWhitelist);
+      setWebsiteList(updatedWhitelist);
       setNewUrl('');
     } catch (err) {
       setError('Please enter a valid website URL');
@@ -53,9 +53,9 @@ const OptionsPage: React.FC = () => {
   };
 
   const handleRemoveUrl = async (urlToRemove: string) => {
-    const updatedWhitelist = whitelist.filter(item => item.url !== urlToRemove);
+    const updatedWhitelist = websiteList.filter(item => item.url !== urlToRemove);
     await chrome.storage.sync.set({ whitelist: updatedWhitelist });
-    setWhitelist(updatedWhitelist);
+    setWebsiteList(updatedWhitelist);
   };
 
   return (
@@ -93,15 +93,14 @@ const OptionsPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Whitelist */}
           <div className='space-y-3'>
-            <h2 className='text-lg font-semibold text-gray-900 mb-4'>Whitelisted Websites</h2>
-            {whitelist.length === 0 ? (
+            <h2 className='text-lg font-semibold text-gray-900 mb-4'>Websites</h2>
+            {websiteList.length === 0 ? (
               <div className='text-center py-8 bg-gray-50 rounded-lg'>
                 <p className='text-gray-500'>No websites added yet</p>
               </div>
             ) : (
-              whitelist.map((item, index) => (
+              websiteList.map((item, index) => (
                 <div
                   key={index}
                   className='flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-200'

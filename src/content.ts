@@ -1,4 +1,4 @@
-interface WhitelistItem {
+interface WebsitelistItem {
   url: string;
 }
 
@@ -74,17 +74,17 @@ const override = () => {
 // Check if current URL is in whitelist
 const shouldApplyOverride = async (): Promise<boolean> => {
   try {
-    const result = await chrome.storage.sync.get(['whitelist']);
-    const whitelist: WhitelistItem[] = result.whitelist || [];
+    const result = await chrome.storage.sync.get(['websiteList']);
+    const websiteList: WebsitelistItem[] = result.websiteList || [];
     const currentHost = window.location.hostname.replace(/^www\./, '');
 
     // Try exact match first
-    if (whitelist.some(item => item.url === currentHost)) {
+    if (websiteList.some(item => item.url === currentHost)) {
       return true;
     }
 
     // Try domain match
-    return whitelist.some(item => currentHost.endsWith(item.url));
+    return websiteList.some(item => currentHost.endsWith(item.url));
   } catch {
     return false;
   }
