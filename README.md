@@ -1,41 +1,51 @@
-# React Chrome Extension Template
+# Pause Blocker Chrome Extension
 
-This is a template for creating a Chrome extension using React and [Vite](https://vitejs.dev/) with TypeScript.
+A Chrome extension that prevents videosand media content from automatically pausing when you switch between tabs.
 
+## Features
 
-## Getting Started
+- Prevents auto-pause behavior when switching tabs
+- Works on most websites that play media content
+- Simple and lightweight
+- Configurable through options page
 
-### Prerequisites
+## Installation
 
-Make sure you have [Node.js](https://nodejs.org/) (version 18+ or 20+) installed on your machine.
+### From Source
 
-### Setup
+1. Clone this repository:
 
-1. Clone or fork the repository :
+```sh
+git clone https://github.com/yourusername/pause-blocker
+cd pause-blocker
+```
 
-    ```sh
-    # To clone
-    git clone https://github.com/5tigerjelly/chrome-extension-react-template
-    cd chrome-extension-react-template
-    ```
+2. Install dependencies:
 
-2. Install the dependencies:
+```sh
+npm install
+```
 
-    ```sh
-    npm install
-    ```
+3. Build the extension:
 
-## 🏗️ Development
+```sh
+npm run build
+```
 
-To start the development server:
+4. Load the extension in Chrome:
+   - Open Chrome and navigate to `chrome://extensions/`
+   - Enable "Developer mode" in the top right corner
+   - Click "Load unpacked" and select the `dist` directory from this project
+
+## Development
+
+To start development with hot-reload:
 
 ```sh
 npm run dev
 ```
 
-This will start the Vite development server and open your default browser.
-
-## 📦 Build 
+## Building
 
 To create a production build:
 
@@ -43,24 +53,19 @@ To create a production build:
 npm run build
 ```
 
-This will generate the build files in the `build` directory.
+The built extension will be in the `dist` directory.
 
-## 📂 Load Extension in Chrome
+## Tech Stack
 
-1. Open Chrome and navigate to `chrome://extensions/`.
-2. Enable "Developer mode" using the toggle switch in the top right corner.
-3. Click "Load unpacked" and select the `build` directory.
-
-Your React app should now be loaded as a Chrome extension!
-
-## 🗂️ Project Structure
-
-- `public/`: Contains static files and the `manifest.json`.
-- `src/`: Contains the React app source code.
-- `vite.config.ts`: Vite configuration file.
-- `tsconfig.json`: TypeScript configuration file.
-- `package.json`: Contains the project dependencies and scripts.
+- React
+- TypeScript
+- Vite
+- Chrome Extension Manifest V3
 
 ## License
 
-This project is licensed under the MIT License.
+MIT License
+
+## Version
+
+Current version: 1.0.1
