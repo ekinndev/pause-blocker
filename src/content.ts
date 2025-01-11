@@ -74,8 +74,8 @@ const override = () => {
 // Check if current URL is in whitelist
 const shouldApplyOverride = async (): Promise<boolean> => {
   try {
-    const result = await chrome.storage.sync.get(['websiteList']);
-    const websiteList: WebsitelistItem[] = result.websiteList || [];
+    const result = await chrome.storage.sync.get(['whitelist']);
+    const websiteList: WebsitelistItem[] = result.whitelist || [];
     const currentHost = window.location.hostname.replace(/^www\./, '');
 
     // Try exact match first
